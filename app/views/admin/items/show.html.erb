@@ -1,0 +1,52 @@
+  <%= render 'admin/header' %>
+  <main>
+    <p id="notice"></p>
+    <div class="container">
+      <div class="row">
+        <h1>商品詳細</h1>
+        <div class="col-md-3">
+          <tr>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image, size: "300x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "300x200" %>
+            <% end %>
+          </tr>
+        </div>
+        <div class="col-md-8 offset-md-1">
+          <tr>
+            <div class="form-group">
+              <td>
+                商品名
+                <%= @item.id %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                商品説明
+                <%= @item.name %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                税込価格</br>
+                (税抜価格)
+                <%= @item.price %>円
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                販売ステータス
+                <%= @item.is_active %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                <%= link_to "編集", edit_admin_item_path(@item.id) %>
+              </td>
+            </div>
+          </tr>
+        </div>
+      </div>
+    </div>
+  </main>

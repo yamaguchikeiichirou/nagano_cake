@@ -1,0 +1,51 @@
+<%= render 'admin/header' %>
+  <main>
+    <p id="notice"></p>
+    <div class="container">
+      <div class="row">
+        <h1>注文履歴詳細</h1>
+        <div>
+          <tr>
+            <div class="form-group">
+              <td>
+                購入者
+                <%= @customer.full_name %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                注文日
+                <%= @order.created_at %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                配送先
+                <%= @order.address %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                支払方法
+                <%= @order.payment_methods %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                注文ステータス
+                <%= @order.status %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                <%= link_to "編集", edit_admin_item_path(@item.id) %>
+              </td>
+            </div>
+          </tr>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+

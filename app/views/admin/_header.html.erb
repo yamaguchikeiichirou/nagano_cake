@@ -1,0 +1,11 @@
+<header>
+  <% if admin_signed_in? %>
+    <li>
+      <%= link_to "aaaaaaaaaaaaaaaaaaaaaaaaaaaaログアウト", destroy_admin_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "aaaaaaaaaaaaaaaaaaaaaaaaaaaaログイン", new_admin_session_path %>
+    </li>      
+  <% end %>
+</header>

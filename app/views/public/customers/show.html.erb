@@ -1,0 +1,51 @@
+<%= render 'public/header' %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div>
+        <h1>マイページ</h1>
+      </div>
+      <div >
+          <tr>
+            <h2>登録情報</h2><%= link_to "編集する", customers_information_edit_path %>
+            <div class="form-group">
+              <td>
+                氏名
+                <%= @customer.last_name %> <%= @customer.first_name %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                カナ
+                <%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                郵便番号
+                <%= @customer.postal_code %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                住所
+                <%= @customer.address %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                電話番号
+                <%= @customer.telephone_number %>
+              </td>
+            </div>
+            <div class="form-group">
+              <td>
+                メールアドレス
+                <%= @customer.email %>
+              </td>
+            </div>
+          </tr>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,11 @@
+<header>
+  <% if customer_signed_in? %>
+    <li>
+      <%= link_to "ppppppppppppppppppppppppログアウト", destroy_customer_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "ppppppppppppppppppppppppログイン", new_customer_session_path %>
+    </li>   
+  <% end %>
+</header> 

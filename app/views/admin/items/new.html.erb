@@ -1,0 +1,41 @@
+<%= render 'admin/header' %>
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-12 col-md-8 col-lg-5 ">
+        <h1>新規投稿</h1>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+　      <div class="form-group">
+　        商品画像
+　        <%= f.file_field :image, accept:'image/*' %>
+　      </div>
+　      <div class="form-group">
+　        商品名
+　        <%= f.text_field :name %>
+　      </div>
+　      <div class="form-group">
+　        商品説明
+　        <%= f.text_area :introduction %>
+　      </div>
+　      <div class="form-group">
+　        税抜価格
+　        <%= f.text_field :price %>円
+　      </div>
+　      <div class="form-group">
+　        販売ステータス
+　        <%= f.label :is_active, '販売中', value: 1 %>
+          <%= f.radio_button :is_active, '1' %>
+
+          <%= f.label :is_active, '販売停止中', value: 0 %>
+          <%= f.radio_button :is_active, '0' %>
+　      </div>
+        <%= f.submit '新規投稿' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- f.collection_select :保存先のカラム名, 選択肢に使うオブジェクト, :一つ目の引数に渡す値, :選択肢に使うカラム名, include_blank: "選択して下さい" -->

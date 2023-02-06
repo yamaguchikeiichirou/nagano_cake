@@ -18,10 +18,12 @@
         <% @items.each do |item| %>
         <div class="col">
           <div class="form-group">
-            <% if item.image.attached? %>
-              <%= image_tag item.image, size: "200x100" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "200x100" %>
+            <%= link_to item_path(item.id) do %>
+            　<% if item.image.attached? %>
+              　<%= image_tag item.image, size: "200x100" %>
+            　<% else %>
+              　<%= image_tag 'no_image', size: "200x100" %>
+            　<% end %>
             <% end %>
           </div>
           <div class="form-group">

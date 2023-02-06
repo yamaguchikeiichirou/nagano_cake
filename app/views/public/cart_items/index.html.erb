@@ -1,2 +1,45 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<%= render 'public/header' %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col">
+      <h2>ショッピングカート</h2>
+      <%= button_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
+      <table>
+        <thead>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </thead>
+        <% @cart_items.each do |cart_item| %>
+          <tbody>
+            <td>
+              <% if cart_item.item.image.attached? %>
+                <%= image_tag cart_item.item.image, size: "60x40" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "60x40" %>
+              <% end %>
+              <%= cart_item.item.name %>
+            </td>
+            <td>
+              <%= cart_item.item.price_tax %>
+            </td>
+            <td>
+              <%= form_with model: cart_item, method: :patch do |f| %>
+                <%= f.select :amount, *[1..10] %>
+                <%= f.submit '変更' %>
+              <% end %>
+            </td>
+            <td>
+              <%= cart_item.subtotal %>
+            </td>
+            <td>
+              <%= link_to "削除", cart_item_path(cart_item.id), method: :delete %>
+            </td>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

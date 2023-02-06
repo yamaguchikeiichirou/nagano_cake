@@ -15,31 +15,27 @@
         <div class="col">
           <tr>
             <h2>
-                <%= @item.name %>
+              <%= @item.name %>
             </h2>
             <div class="form-group">
               <td>
-                商品説明
                 <%= @item.introduction %>
               </td>
             </div>
             <div class="form-group">
               <td>
-                税込価格</br>
-                (税抜価格)
-                <%= @item.price %>円
-              </td>
+                ¥<%= @item.price_tax %>(税込)
             </div>
             <div class="form-group">
-              <td>
-                販売ステータス
-                <%= @item.is_active %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                <%= link_to "カートに入れる", cart_items_path %>
-              </td>
+              <%= form_with model: CartItem, method: :post do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <td>
+                  <%= f.select :amount, *[1..10], { include_blank: "個数選択" } %>
+                </td>
+                <td>
+                  <%= f.submit 'カートに入れる' %>
+                </td>
+              <% end %>
             </div>
           </tr>
         </div>

@@ -1,0 +1,70 @@
+<%= render 'public/header' %>
+<main>
+    <p id="notice"></p>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table>
+            <thead>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+            </thead>
+            <% @cart_items.each do |cart_item| %>
+            <tbody>
+              <tr>
+                <td>
+                  <% if cart_item.item.image.attached? %>
+                    <%= image_tag cart_item.item.image, size: "60x40" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "60x40" %>
+                  <% end %>
+                  <%= cart_item.item.name %>
+                </td>
+                <td>
+                  <%= cart_item.item.name %>
+                </td>
+                <td>
+                  <%= cart_item.item.price_tax %>
+                </td>
+                <td>
+                  <%= cart_item.amount %>
+                </td>
+                <td>
+                  <%= cart_item.subtotal %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+          <table>
+            <thead>
+              <th>送料</th>
+              <th>商品合計</th>
+              <th>請求金額</th>
+            </thead>
+            <tbody>
+              <td></td>
+              <td><%= @total.round.to_s(:delimited)%></td>
+              <td></td>
+            </tbody>
+          </table>
+          <h2>支払方法</h2>
+          <%= @order.payment_method %>
+          <h2>お届け先</h2>
+          〒<%= @order.postal_code %><%= @order.address %><%= @order.name %>
+          <div>
+            <%= form_with model: Order.new,url: orders_path, method: :post do |f| %>
+              <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+              <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+              <%= f.hidden_field :address, :value => @order.address %>
+              <%= f.hidden_field :name, :value => @order.name %>
+              <%= f.submit '注文を確定する' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

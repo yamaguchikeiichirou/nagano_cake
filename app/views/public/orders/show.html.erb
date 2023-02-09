@@ -1,2 +1,44 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<%= render "public/header" %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>注文履歴詳細</h1>
+      <table>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.to_s(:datetime_jp) %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @total.round.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th>ご請求額</th>
+          <td><%= @order.total_payment %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

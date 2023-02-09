@@ -9,7 +9,7 @@
             <div class="form-group">
               <td>
                 購入者
-                <%= @customer.name %>
+                <%= @customer.full_name %>
               </td>
             </div>
             <div class="form-group">
@@ -27,7 +27,7 @@
             <div class="form-group">
               <td>
                 支払方法
-                <%= @order.payment_methods %>
+                <%= @order.payment_method %>
               </td>
             </div>
             <div class="form-group">
@@ -38,7 +38,18 @@
             </div>
             <div class="form-group">
               <td>
-                <%= link_to "編集", edit_admin_item_path(@item.id) %>
+                <% form_with model: @order, patch do |f| %>
+                  <%= f.radio_button :status, Order.statuses.key(0) %>
+                  <%= f.label :status_wait_payment,  Order.statuses_i18n[:wait_payment]%>
+                  <%= f.radio_button :status, Order.statuses.key(1) %>
+                  <%= f.label :status_payment_confirmation, Order.statuses_i18n[:payment_confirmation] %>
+                  <%= f.radio_button :status, Order.statuses.key(2) %>
+                  <%= f.label :status_production,  Order.statuses_i18n[:production]%>
+                  <%= f.radio_button :status, Order.statuses.key(3) %>
+                  <%= f.label :status_shipping_preparation, Order.statuses_i18n[:shipping_preparation] %>
+                  <%= f.radio_button :status, Order.statuses.key(4) %>
+                  <%= f.label :status_shipped, Order.statuses_i18n[:shipped] %>
+                <% end %>
               </td>
             </div>
           </tr>

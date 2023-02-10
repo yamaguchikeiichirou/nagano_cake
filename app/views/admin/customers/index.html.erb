@@ -13,8 +13,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @customers.each do |customer| %>
-          <div class="form-group">
+          <% @customers.each do |customer| %>
             <tr>
               <td>
                 <%= customer.id %>
@@ -33,9 +32,8 @@
                 <% end %>
               </td>
             </tr>
-          </div>
-        <% end %>
-        <%= paginate @customers %>
+          <% end %>
+          <%= paginate @customers %>
         <tbody>
       </table>
     </div>

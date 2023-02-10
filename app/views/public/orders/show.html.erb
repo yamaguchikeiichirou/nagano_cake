@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col">
       <h1>注文履歴詳細</h1>
+      <caption>注文情報</caption>
       <table>
         <tr>
           <th>注文日</th>
@@ -25,6 +26,7 @@
           <td><%= @order.status_i18n %></td>
         </tr>
       </table>
+      <caption>請求情報</caption>
       <table>
         <tr>
           <th>商品合計</th>
@@ -38,6 +40,26 @@
           <th>ご請求額</th>
           <td><%= @order.total_payment %></td>
         </tr>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %></td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>

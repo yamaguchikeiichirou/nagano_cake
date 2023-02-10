@@ -37,7 +37,11 @@
             <div class="form-group">
               <td>
                 販売ステータス
-                <%= @item.is_active %>
+                <% if @item.is_active? %>
+                  販売中
+                <% else %>
+                  販売停止中
+                <% end %>
               </td>
             </div>
             <div class="form-group">

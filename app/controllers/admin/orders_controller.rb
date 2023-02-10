@@ -1,7 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    @customer = @order.customer
+    @order_details = @order.order_details.includes(:item)
+    @total = @order_details.sum(&:subtotal)
   end
 
   def update

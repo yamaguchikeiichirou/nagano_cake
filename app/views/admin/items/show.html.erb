@@ -1,56 +1,49 @@
   <%= render 'admin/header' %>
   <main>
-    <p id="notice"></p>
     <div class="container">
+      <div class="row mx-5 mt-4 mb-5">
+        <div class="col-auto mt-3 mb-2 mx-3 text-center table-secondary">
+          <caption>商品詳細</caption>
+        </div>
+      </div>
       <div class="row">
-        <h1>商品詳細</h1>
-        <div class="col-md-3">
-          <tr>
+        <div class="col-4">
             <% if @item.image.attached? %>
               <%= image_tag @item.image, size: "300x200" %>
             <% else %>
               <%= image_tag 'no_image', size: "300x200" %>
             <% end %>
-          </tr>
         </div>
-        <div class="col-md-8 offset-md-1">
-          <tr>
-            <div class="form-group">
-              <td>
-                商品名
-                <%= @item.name %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                商品説明
-                <%= @item.introduction %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                税込価格</br>
-                (税抜価格)
-                <%= @item.price %>円
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                販売ステータス
+        <div class="col-1"></div>
+        <div class="col-md-6">
+          <table width="100%">
+            <tr>
+              <th class="py-2" width="30%">商品名</th>
+              <td class="py-2"><%= @item.name %></td>
+            </tr>
+            <tr>
+              <th class="py-2">商品説明</th>
+              <td class="py-2"><%= @item.introduction %></td>
+            </tr>
+            <tr>
+              <th class="py-2">税込価格</br>(税抜価格)</th>
+              <td class="py-2"><%= @item.price_tax.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>）円</td>
+            </tr>
+            <tr>
+              <th class="py-2">販売ステータス</th>
+              <td class="pt-3">
                 <% if @item.is_active? %>
-                  販売中
+                  <p class="text-success">販売中</p>
                 <% else %>
-                  販売停止中
+                  <p class="text-muted">販売停止中</p>
                 <% end %>
               </td>
-            </div>
-            <div class="form-group">
-              <td>
-                <%= link_to "編集", edit_admin_item_path(@item.id) %>
-              </td>
-            </div>
-          </tr>
+            </tr>
+          </table>
         </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <%= link_to "編集", edit_admin_item_path(@item.id), class: "btn btn-success px-4 my-4" %>
       </div>
     </div>
   </main>

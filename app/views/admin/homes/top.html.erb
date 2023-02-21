@@ -1,14 +1,18 @@
 <%= render 'admin/header' %>
 <div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>注文履歴一覧</h2>
-      <table class="table table-hover table-inverse">
-        <thead>
+  <div class="row mx-5">
+    <div class="col-auto mt-3 mb-2 mx-3 text-center table-secondary">
+      <caption>注文履歴一覧</caption>
+    </div>
+  </div>
+  <div class="row mx-5">
+    <div class="col-11">
+      <table class="table table-hover table-inverse" width="100%">
+        <thead class="table-secondary">
           <tr>
             <th>購入日時</th>
             <th>購入者</th>
-            <th><注文個数/th>
+            <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
         </thead>
@@ -17,7 +21,7 @@
           <div class="form-group">
             <tr>
               <td>
-                <%= link_to admin_order_path(order.id) do %>
+                <%= link_to admin_order_path(order.id), class: "text-dark border-bottom border-dark" do %>
                   <%= order.created_at.to_s(:datetime_jp) %>
                 <% end %>
               </td>
@@ -35,9 +39,11 @@
             </tr>
           </div>
         <% end %>
-        <%= paginate @orders %>
         <tbody>
       </table>
     </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <%= paginate @orders %>
   </div>
 </div>

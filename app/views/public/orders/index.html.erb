@@ -1,16 +1,20 @@
 <%= render "public/header" %>
 <div class="container">
   <div class="row">
-    <h2>注文履歴一覧</h2>
+    <div class="col-auto my-4 ml-5 text-center table-secondary">
+      <caption>注文履歴一覧</caption>
+    </div>
+  </div>
+  <div class="row">
     <div class="col">
-      <table>
-        <thead>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
+      <table border="1" width="90%">
+        <thead class="table-secondary">
+          <th width="10%">注文日</th>
+          <th width="45%">配送先</th>
+          <th width="15%">注文商品</th>
+          <th width="10%">支払額</th>
+          <th width="10%">ステータス</th>
+          <th width="10%">注文詳細</th>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
@@ -29,13 +33,13 @@
                 <% end %>
               </td>
               <td>
-                <%= order.total_payment.to_s(:delimited) %>
+                <%= order.total_payment.to_s(:delimited) %>円
               </td>
               <td>
                 <%= order.status_i18n %>
               </td>
-              <td>
-                <%= link_to "表示する",order_path(order.id) %>
+              <td class="text-center">
+                <%= link_to "表示する",order_path(order.id), class: "btn btn-primary btn-sm px-3" %>
               </td>
             </tr>
           <% end %>

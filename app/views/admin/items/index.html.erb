@@ -1,15 +1,24 @@
 <%= render 'admin/header' %>
 <div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>商品一覧</h2>
-      <table class="table table-hover table-inverse">
-        <thead>
+  <div class="row mx-5">
+    <div class="col-auto mt-3 mb-2 mx-3 text-center table-secondary">
+      <caption>商品一覧</caption>
+    </div>
+    <div class="col mt-3 mb-2 mx-3 text-right">
+      <%= link_to new_admin_item_path, class: "btn btn-success btn-sm" do %>
+        新規商品追加
+      <% end %>
+    </div>
+  </div>
+  <div class="row mx-5">
+    <div class="col-11">
+      <table class="table table-hover table-inverse" width="100%">
+        <thead class="table-secondary">
           <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ステータス</th>
+            <th width="10%">商品ID</th>
+            <th width="40%">商品名</th>
+            <th width="30%">税抜価格</th>
+            <th width="20%">ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -20,24 +29,26 @@
                 <%= item.id %>
               </td>
               <td>
-                <%= link_to item.name, admin_item_path(item.id) %>
+                <%= link_to item.name, admin_item_path(item.id), class: "text-dark border-bottom border-dark" %>
               </td>
               <td>
-                <%= item.price %>
+                <%= item.price.to_s(:delimited) %>
               </td>
               <td>
                 <% if item.is_active? %>
-                  販売中
+                  <p class="text-success">販売中</p>
                 <% else %>
-                 販売停止中
+                 <p class="text-muted">販売停止中</p>
                 <% end %>
               </td>
             </tr>
           </div>
         <% end %>
-          <%= paginate @items %>
         <tbody>
       </table>
     </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <%= paginate @items %>
   </div>
 </div>

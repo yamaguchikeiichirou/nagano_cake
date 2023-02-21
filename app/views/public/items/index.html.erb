@@ -1,35 +1,49 @@
-<%= render 'public/header' %>
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col">
-      <h2>商品一覧</h2>
-      <p>（全<%= @items.count %>件）</p>
-      <div class="row">
-        <% @items.each do |item| %>
-        <div class="col">
-        　<div class="form-group">
-        　   <%= link_to item_path(item.id) do %>
-            　<% if item.image.attached? %>
-              　<%= image_tag item.image, size: "250x160" %>
-            　<% else %>
-              　<%= image_tag 'no_image', size: "250x160" %>
-            　<% end %>
-            <% end %>
-        　</div>
-          <div class="form-group">
-            <td>
-              <%= item.name %>
-            </td>
-          </div>
-          <div class="form-group">
-            <td>
-              ¥<%= item.price %>
-            </td>
-          </div>
-        </div>
-        <% end %>
-        <%= paginate @items %>
+  <%= render 'public/header' %>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-auto mt-5 pr-0 ml-4">
+        <h4>
+          商品一覧
+        </h4>
+      </div>
+      <div class="col-auto mt-5 pl-0 align-self-center">
+        <span>（全<%= @items.count %>件）</span>
       </div>
     </div>
+    <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-4 text-center">
+        <div>
+          <% if customer_signed_in? %>
+            <%= link_to item_path(item.id),style: "text-decoration: none;" do %>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: "250x125" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "250x125" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "250x125" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "250x125" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <td>
+            <%= item.name %>
+          </td>
+        </div>
+        <div>
+          <td>
+            ¥<%= item.price %>
+          </td>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="row justify-content-md-center">
+      <%= paginate @items %>
+    </div>
   </div>
-</div>

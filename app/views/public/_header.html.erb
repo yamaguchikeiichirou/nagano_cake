@@ -1,11 +1,84 @@
-<header>
-  <% if customer_signed_in? %>
-    <li>
-      <%= link_to "ppppppppppppppppppppppppログアウト", destroy_customer_session_path, method: :delete %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to "ppppppppppppppppppppppppログイン", new_customer_session_path %>
-    </li>   
-  <% end %>
-</header> 
+  <body>
+    <% if customer_signed_in? %>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom border-dark">
+          <div class="container-fluid pt-4 pb-4">
+            <div clas="col-5 bg-light p-5 border">
+              <a class="navbar-brand" href="/">
+                <span class="text-dark pt-2 pb-2 pl-4 pr-4 rounded border border-dark">NaganoCake</span>
+              </a>
+            </div>
+            <div clas="col-2">
+              <span>ようこそ、<%= current_customer.full_name %>！</span>
+            </div>
+            <div clas="col-auto">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="pr-3">
+                    <%= link_to customers_mypage_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                      マイページ
+                    <% end %>
+                  </li>
+                  <li class="pr-3 pl-3">
+                    <%= link_to items_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                      商品一覧
+                    <% end %>
+                  </li>
+                  <li class="pr-3 pl-3">
+                    <%= link_to cart_items_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                      カート
+                    <% end %>
+                  </li>
+                  <li class="pl-3">
+                    <%= link_to destroy_customer_session_path, method: :delete,class: "nav-link text-dark rounded border border-black-50" do %>
+                      ログアウト
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <% else %>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom border-dark">
+          <div class="container-fluid pt-4 pb-4">
+            <a class="navbar-brand" href="/">
+              <span class="text-dark pt-2 pb-2 pl-4 pr-4 rounded border border-dark">NaganoCake</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="pr-3">
+                  <%= link_to about_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                    About
+                  <% end %>
+                </li>
+                <li class="pr-3 pl-3">
+                  <%= link_to items_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                    商品一覧
+                  <% end %>
+                </li>
+                <li class="pr-3 pl-3">
+                  <%= link_to new_customer_registration_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                    新規登録
+                  <% end %>
+                </li>
+                <li class="pl-3">
+                  <%= link_to new_customer_session_path,class: "nav-link text-dark rounded border border-black-50" do %>
+                    ログイン
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <% end %>
+  </body>

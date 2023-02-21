@@ -1,40 +1,49 @@
 <%= render 'public/header' %>
 <main>
-  <p id="notice"></p>
-  <div class="container">
+  <div class="container px-5 px-sm-0">
     <div class="row ">
-      <div>
-        <h1>商品編集</h1>
-      </div>
-      <div class="col px-5 px-sm-0 mx-auto">
-      <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
-　      <div class="form-group">
-　        氏名
-　        <%= f.text_field :last_name %><%= f.text_field :first_name %>
-　      </div>
-　      <div class="form-group">
-　        フリガナ
-　        <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
-　      </div>
-　      <div class="form-group">
-　        郵便番号
-　        <%= f.text_field :postal_code %>
-　      </div>
-　      <div class="form-group">
-　        住所
-　        <%= f.text_field :address %>
-　      </div>
-　      <div class="form-group">
-　        電話番号
-　     　 <%= f.text_field :telephone_number %>
-　      </div>
-　      <div class="form-group">
-　        メールアドレス
-　     　 <%= f.text_field :email %>
-　      </div>
-        <%= f.submit '編集内容を保存' %><%= link_to "退会する",ccustomers_withdrawal_verification_path %>
-      <% end %>
+      <div class="col-auto mt-4 mb-3 ml-5 table-secondary">
+        <caption>会員情報編集</caption>
       </div>
     </div>
+    <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+    <duv class="row">
+      <div class="col">
+        <table width="70%">
+　        <tr>
+            <th class="pb-2">氏名</th>
+            <td class="pb-2"><%= f.text_field :last_name %></td>
+            <td class="pb-2"><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <th class="pb-2">フリガナ</th>
+            <td class="pb-2"><%= f.text_field :last_name_kana %></td>
+            <td class="pb-2"><%= f.text_field :first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="pb-2">郵便番号</th>
+            <td class="pb-2"><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <th class="pb-2">住所</th>
+            <td class="pb-2"><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <th class="pb-2">電話番号</th>
+            <td class="pb-2"><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <th class="pb-2">メールアドレス</th>
+            <td class="pb-2"><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <th class="pt-2"></th>
+            <td class="pt-2"><%= f.submit '編集内容を保存', class: "btn btn-success btn-sm px-5" %></td>
+            <td class="text-right pt-2"><%= link_to "退会する",ccustomers_withdrawal_verification_path, class: "btn btn-danger btn-sm px-3" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <% end %>
   </div>
 </main>

@@ -1,25 +1,33 @@
-  <body>
-    <%= render 'admin/header' %>
-    <h2>管理者ログイン</h2>
-    <%= form_with model: @admin, url: admin_session_path do |f| %>
-      <div class="field">
+<%= render 'admin/header' %>
+<div class="container px-5 px-sm-0">
+  <div class="row pl-5">
+    <div class="col-auto my-5 ml-5 text-center table-secondary">
+      <caption>管理者ログイン</caption>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-7">
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+      <table width=100%>
         <tr>
-          <th>メールアドレス</th>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <th class="pb-3">メールアドレス</th>
+          <td class="pb-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
-      </div>
-      <div class="field">
         <tr>
-          <th>パスワード</th>
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <th class="pb-3">パスワード</th>
+          <td class="pb-3"><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
-      </div>
-      <div class="actions">
-        <%= f.submit "Log in" %>
-      </div>
-    <% end %>
-    <%= render "admin/shared/links" %>
-    <%= yield %>
-  </body>
+        <tr>
+          <th class="pt-2"></th>
+          <td class="pt-2"><%= f.submit "ログイン", class: "btn btn-primary btn-sm px-3" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+    
+<%= render "admin/shared/links" %>
+<%= yield %>
 
 

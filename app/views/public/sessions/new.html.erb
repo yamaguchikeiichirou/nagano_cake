@@ -1,21 +1,46 @@
 <%= render 'public/header' %>
-<h2>ログイン</h2>
-<h4>会員の方はこちらからログイン</h4>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    メールアドレス
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container px-5 px-sm-0">
+  <div class="row pl-5">
+    <div class="col-auto mt-3 mb-2 ml-4 text-center table-secondary">
+      <caption>ログイン</caption>
+    </div>
   </div>
-
-  <div class="field">
-    パスワード
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row pl-5">
+    <div class="col-auto mt-3 mb-2 ml-5 text-center table-secondary">
+      <caption>会員の方はこちらからログイン</caption>
+    </div>
   </div>
+  <div class="row justify-content-md-center">
+    <div class="col-7">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table width="100%">
+        <tr>
+          <th class="py-3">メールアドレス</th>
+          <td class="py-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+        <tr>
+          <th class="py-3">パスワード</th>
+          <td class="py-3"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+
+        <tr class="actions mt-3 mb-5">
+          <th></th>
+          <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
   </div>
-<% end %>
+  <div class="row pl-5">
+    <div class="col-auto mt-3 mb-2 ml-5 text-center table-secondary">
+      <caption>会員登録がお済みでない方</caption>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-auto text-center">
+      <%= render "public/shared/links" %>
+    </div>
+  </div>
+</div>
 
-<%= render "public/shared/links" %>

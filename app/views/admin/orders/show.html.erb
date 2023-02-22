@@ -10,7 +10,11 @@
       <table width="100%">
         <tr>
           <th class="pb-2" width="20%">購入者</th>
-          <td class="pb-2"><%= @order.customer.full_name %></td>
+          <td class="pb-2">
+            <%= link_to  admin_customer_path(@order.customer_id), class: "text-dark border-bottom border-dark" do %>
+              <%= @order.customer.full_name %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th class="pb-2" width="20%">注文日</th>

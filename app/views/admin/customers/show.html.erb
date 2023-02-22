@@ -1,72 +1,68 @@
-<%= render 'admin/header' %>
-<main>
-  <div class="container">
-    <div class="row">
-      <div>
-          <tr>
-            <h2><%= @customer.full_name %>さんの会員詳細</h2>
-            <div class="form-group">
-              <td>
-                会員ID
-                <%= @customer.id %>
+  <%= render 'admin/header' %>
+  <main>
+    <div class="container">
+      <div class="row mx-5">
+        <div class="col-auto mt-3 mb-2 mx-3 text-center table-secondary">
+          <caption><%= @customer.full_name %>さんの会員詳細</caption>
+        </div>
+      </div>
+      <div class="row mx-5">
+        <div class="col-8">
+          <table width="100%">
+            <tr>
+              <th class="pb-3">会員ID</th>
+              <td class="pb-3"><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <th class="pb-3">氏名</th>
+              <td class="pb-3">
+                <%= @customer.last_name %>
+                <%= @customer.first_name %>
               </td>
-            </div>
-            <div class="form-group">
-              <td>
-                氏名
-                <%= @customer.last_name %> <%= @customer.first_name %>
+            </tr>
+            <tr>
+              <th class="pb-3">フリガナ</th>
+              <td class="pb-3">
+                <%= @customer.last_name_kana %>
+                <%= @customer.first_name_kana %>
               </td>
-            </div>
-            <div class="form-group">
-              <td>
-                フリガナ
-                <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                郵便番号
-                <%= @customer.postal_code %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                電話番号
-                <%= @customer.telephone_number %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                メールアドレス
-                <%= @customer.email %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
-                住所
-                <%= @customer.address %>
-              </td>
-            </div>
-            <div class="form-group">
-              <td>
+            </tr>
+            <tr>
+              <th class="pb-3">郵便番号</th>
+              <td class="pb-3"><%= @customer.postal_code %></td>
+            </tr>
+            <tr>
+              <th class="pb-3">住所</th>
+              <td class="pb-3"><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <th class="pb-3">電話番号</th>
+              <td class="pb-3"><%= @customer.telephone_number %></td>
+            </tr>
+            <tr>
+              <th class="pb-3">メールアドレス</th>
+              <td class="pb-3"><%= @customer.email %></td>
+            </tr>
+            <tr>
+              <th class="pb-3">会員ステータス</th>
+              <td class="pb-3">
                 <% if @customer.is_deleted? %>
-                  退会
+                  <p class="text-muted pt-2">退会</p>
                 <% else %>
-                　有効
+                　<p class="text-success pt-2">有効</p>
                 <% end %>
               </td>
-            </div>
-            <div class="form-group">
-              <td>
-                <%= link_to "編集する", edit_admin_customer_path(@customer.id) %><%= link_to "注文履歴一覧を見る", admin_root_path %>
-              </td>
-            </div>
-
-          </tr>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success  btn-sm px-3" %></td>
+              <td><%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary btn-sm px-3" %></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 
 
 

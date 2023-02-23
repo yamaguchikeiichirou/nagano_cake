@@ -14,7 +14,6 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
           </thead>
           <% @cart_items.each do |cart_item| %>
             <tbody>
@@ -28,16 +27,13 @@
                   <%= cart_item.item.name %>
                 </td>
                 <td>
-                  <%= cart_item.item.name %>
-                </td>
-                <td>
-                  <%= cart_item.item.price_tax %>
+                  <%= cart_item.item.price_tax.to_s(:delimited) %>
                 </td>
                 <td>
                   <%= cart_item.amount %>
                 </td>
                 <td>
-                  <%= cart_item.subtotal %>
+                  <%= cart_item.subtotal.to_s(:delimited) %>
                 </td>
               </tr>
             </tbody>
@@ -56,7 +52,7 @@
           </tr>
           <tr>
             <th class="table-secondary">請求金額</th>
-            <td><%= @order.total_payment %></td>
+            <td><%= @order.total_payment.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

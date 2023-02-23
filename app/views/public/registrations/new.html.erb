@@ -12,13 +12,15 @@
           <%= render "public/shared/error_messages", resource: resource %>
 　        <tr>
             <th class="pb-2">名前</th>
-            <td class="pb-2">（姓）</td><td class="pb-2"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
             <td class="pb-2">（名）</td><td class="pb-2"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+            <td class="pb-2">（姓）</td><td class="pb-2"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+
           </tr>
           <tr>
             <th class="pb-2">フリガナ</th>
-            <td class="pb-2">（セイ）</td><td class="pb-2"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></td>
             <td class="pb-2">（メイ）</td><td class="pb-2"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></td>
+            <td class="pb-2">（セイ）</td><td class="pb-2"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></td>
+
           </tr>
           <tr>
             <th class="pb-2">メールアドレス</th>
@@ -60,7 +62,11 @@
           <tr>
             <th></th>
             <td></td>
-            <td ><%= f.submit "新規登録", class: "btn btn-primary btn-success px-5" %></td>
+            <td>
+              <div class="actions">
+                <%= f.submit "新規登録", class: "btn btn-primary btn-success px-5" %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </table>

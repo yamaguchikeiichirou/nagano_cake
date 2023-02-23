@@ -7,8 +7,8 @@
   </div>
   <div class="row">
     <div class="col">
-      <table>
-        <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+        <table>
           <%= render "public/shared/error_messages", resource: resource %>
 　        <tr>
             <th class="pb-2">名前</th>
@@ -68,8 +68,8 @@
               </div>
             </td>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
     </div>
   </div>
   <div class="row">
